@@ -1,3 +1,4 @@
+//пакет чтение из файла 
 package datafile
 
 import (
