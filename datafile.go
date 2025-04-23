@@ -8,8 +8,8 @@ import (
 )
 
 // GetFloats читает значение float64bp из каждый строчки файла.
-func GetFloats(fileName string) ([3]float64, error) {
-	var numbers [3]float64
+func GetFloats(fileName string) ([]float64, error) {
+	var numbers []float64
 	file, err := os.Open(fileName)
 	if err != nil {
 		return numbers, err
@@ -21,7 +21,13 @@ func GetFloats(fileName string) ([3]float64, error) {
 		if err != nil {
 			return numbers, err
 		}
+		numbers = appand(numbers, number)
 	}
+	err = file.Close()
+	if err !=nil{
+		return numbers, err
+		}
+	
 	if scanner.Err() != nil {
 		return numbers, scanner.Err()
 	}
